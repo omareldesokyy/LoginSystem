@@ -9,7 +9,7 @@ body {
     font-size: 15px;
     line-height: 1.7;
     color: #ffffff;
-    background-color: #1f2029;
+    background-color: rgb(31, 32, 41);
     overflow-x: hidden;
   
 }
@@ -126,8 +126,8 @@ body {
     --bs-btn-border-color: #ffeba7;
     --bs-btn-hover-color: #1f2029;
     --bs-btn-hover-bg: rgb(234, 196, 125);
-    --bs-btn-hover-border-color: #ffeba7;
-    --bs-btn-focus-shadow-rgb: 225, 83, 97;
+    --bs-btn-hover-border-color: rgb(255, 235, 167);
+    --bs-btn-focus-shadow-rgb:  255, 235, 167;
     --bs-btn-active-color: #fff;
     --bs-btn-active-bg: #ffeba7;
     --bs-btn-active-border-color: #ffeba7;
