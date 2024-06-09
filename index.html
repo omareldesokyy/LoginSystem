@@ -19,18 +19,31 @@
 <body>
 
 	<div class="container">
+		
+		<!-- Welcome and Logout -->
 		<div id="info" class="d-none justify-content-between m-3">
 		</div>
+		<!-- Welcome and Logout -->
 
+
+		<!-- Login and Signup Forms -->
 		<div id="login-system" class="row  justify-content-center">
+
 			<div class="col-12 text-center align-self-center py-5">
+
+				<!-- Toggling Div -->
 				<h6 class="mb-0 d-flex justify-content-center gap-5 pb-3">
 					<span>Log In </span>
 					<span>Sign Up</span>
 				</h6>
 				<input class="d-none checkbox" type="checkbox" id="reg-log" name="reg-log" />
 				<label for="reg-log"></label>
+				<!-- Toggling Div -->
+
+				<!-- Flipping  -->
 				<div class="flip mx-auto">
+				<!-- Login  -->
+
 					<div class="card-front shadow  py-3 px-3">
 						<h4 class="mb-4 pb-3">Log In</h4>
 						<div class="form-floating mb-3">
@@ -48,6 +61,10 @@
 
 						</div>
 					</div>
+				<!-- Login  -->
+
+				<!-- Signup -->
+
 					<div class="card-back shadow py-3 px-3">
 						<h4 class="mb-4 pb-3">Sign Up</h4>
 						<div class="form-floating mb-3">
@@ -67,27 +84,41 @@
 						</div>
 						<button id="signupBtn" class="btn btn-gold mt-3 ">Sign Up</button>
 					</div>
+				<!-- Signup -->
+
 				</div>
+				<!-- Flipping  -->
+
 			</div>
 		</div>
+		<!-- Login and Signup Forms -->
 
+
+		<!-- To be fill with data Screen -->
 		<div id="data" class="row d-none">
+			<!-- Loading Screen -->
 			<div class="load mt-3 d-flex justify-content-center align-items-center">
 				<div class="spinner">
 					<div class="cube1"></div>
 					<div class="cube2"></div>
 				</div>
 			</div>
+			<!-- Loading Screen -->
+
 		</div>
+		<!-- To be fill with data Screen -->
 
 	</div>
 
 
+	<!-- Alert Toast -->
 	<div class="toast-container position-fixed bottom-0 end-0 p-3">
 		<div id="liveToast">
 
 		</div>
 	</div>
+	<!-- Alert Toast -->
+
 
 	<script src="js/bootstrap.bundle.min.js"></script>
 	<script src="js/script.js"></script>

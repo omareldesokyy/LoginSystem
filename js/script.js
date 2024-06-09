@@ -1,3 +1,6 @@
+
+//Login & Signup Switching
+
 var toggle = document.querySelector('.checkbox');
 var flip = document.querySelector('.flip');
 
@@ -12,6 +15,8 @@ function isChecked() {
 
 toggle.addEventListener('click', isChecked)
 
+
+//Inputs Selecting
 var liEmail = document.getElementById('li-email');
 var liPassword = document.getElementById('li-password');
 var suName = document.getElementById('su-name');
@@ -24,11 +29,28 @@ var data = document.getElementById('data');
 var info = document.getElementById('info');
 var logoutBtn = document.getElementById('logoutBtn');
 
-
+//Alerts
 const toastAlert = document.getElementById('liveToast');
 const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastAlert)
 
+function Alert(type, tite, message) {
+    toastAlert.innerHTML = `
+			                </div>
+                            <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+                                    <strong>${tite}</strong>  ${message}
+                               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            `
+    toastBootstrap.show()
+}
+
 var users = [];
+
+if (localStorage.getItem('users') != null) {
+    users = JSON.parse(localStorage.getItem('users'));
+}
+
+//Get Login Status while refresh
 if (localStorage.getItem('status') != null){
     if(localStorage.getItem('status').includes('login')){
         localStorage.getItem('status').split(',')[1]
@@ -44,13 +66,7 @@ if (localStorage.getItem('status') != null){
     }
 }
 
-
-if (localStorage.getItem('users') != null) {
-    users = JSON.parse(localStorage.getItem('users'));
-}
-
-
-
+//Validation
 var emailValidate=/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 var passwordValidate = /^.{8,}$/;
 var nameValidate = /^.{4,}$/;
@@ -97,17 +113,8 @@ suPassword.addEventListener('focusout',function(){
     }
 })
 
-function Alert(type, tite, message) {
-    toastAlert.innerHTML = `
-			                </div>
-                            <div class="alert alert-${type} alert-dismissible fade show" role="alert">
-                                    <strong>${tite}</strong>  ${message}
-                               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                            `
-    toastBootstrap.show()
-}
 
+//SystemLogin Buttons
 function signUp() {
 
 
@@ -129,6 +136,11 @@ function signUp() {
             Alert('success', 'Sign Up Successfully,', 'Thank you for registration.');
     
             clearSignUpData();
+
+            suName.classList.remove('is-valid')
+            suEmail.classList.remove('is-valid')
+            suPassword.classList.remove('is-valid')
+
         }
         else {
             Alert('danger', 'Sign Up Error,', 'The email you enterd is already signed up,Kindly login or use another email.');
@@ -172,15 +184,6 @@ function logIn() {
    
 }
 
-loginBtn.addEventListener('click', logIn)
-
-signupBtn.addEventListener('click',signUp)
-
-function infoDisplay(userName) {
-    info.innerHTML = `<h4 class="bg-darkblue gold shadow px-3 py-2 rounded-pill d-inline-block" >Welcome, ${userName}</h4>
-                      <button id="logoutBtn" onclick="logOut()" class="bg-transparent border-0"><i class="fa-solid fa-right-from-bracket  gold "></i></button>`
-}
-
 function clearSignUpData() {
     suName.value = "";
     suEmail.value = "";
@@ -192,6 +195,19 @@ function clearLogInData() {
     liPassword.value = "";
 }
 
+loginBtn.addEventListener('click', logIn)
+
+signupBtn.addEventListener('click',signUp)
+
+//*****After Login****
+
+//Welcome Information
+function infoDisplay(userName) {
+    info.innerHTML = `<h4 class="bg-darkblue gold shadow px-3 py-2 rounded-pill d-inline-block" >Welcome, ${userName}</h4>
+                      <button id="logoutBtn" onclick="logOut()" class="bg-transparent border-0"><i class="fa-solid fa-right-from-bracket  gold "></i></button>`
+}
+
+//Get API Data
 var responsedData = [];
 
 async function getData() {
@@ -217,6 +233,7 @@ function displayData() {
    
 }
 
+//Logout
 function logOut(){
     data.innerHTML=`<div class="load mt-3 d-flex justify-content-center align-items-center">
 				        <div class="spinner">
